@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#8201FF</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="denim_dark">#2a4263</color>
+    <color name="denim_light">#ced5e8</color>
+    <color name="denim">#3a58a3</color>
+    <color name="white_12">#1effffff</color>
+    <color name="reddish_purple">#8d0b6b</color>
+    <color name="reddish_pink">#ff2d55</color>
+    <color name="light_grey_green">#b6da90</color>
+    <color name="darkish_pink">#d54694</color>
+    <color name="icon_disabled">#FF63727B</color>
+    <color name="deep_orange">#d03602</color>
+    <color name="periwinkle_blue">#bbcefc</color>
+    <color name="carolina_blue">#8eadfa</color>
+    <color name="purple">#8201FF</color>
+    <color name="black">#000000</color>
+</resources>
