@@ -2,11 +2,23 @@ package com.example.furnitureapp.data.model
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-data class HomeItem(var name: String, var description: String, var rating: String, var image: Int, var price: String) : Parcelable {
+@Entity(tableName = "homeitem")
+data class HomeItem(@PrimaryKey
+                    @ColumnInfo(name = "name") var name: String,
+                    @ColumnInfo(name = "description") var description: String,
+                    @ColumnInfo(name = "rating") var rating: String,
+                    @ColumnInfo(name = "image") var image: Int,
+                    @ColumnInfo(name = "price") var price: String) : Parcelable {
 
+    @ColumnInfo(name = "length")
     lateinit var length: String
+    @ColumnInfo(name = "height")
     lateinit var height: String
+    @ColumnInfo(name = "depth")
     lateinit var depth: String
 
     constructor(parcel: Parcel) : this(
