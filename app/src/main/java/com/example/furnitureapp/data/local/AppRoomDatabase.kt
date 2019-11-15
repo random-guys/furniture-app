@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.furnitureapp.data.local.dao.FurnitureDao
 import com.example.furnitureapp.data.model.HomeItem
 
-@Database(entities = [HomeItem::class], version = DatabaseMigrations.latestVersion)
+@Database(entities = [HomeItem::class], version = DatabaseMigrations.latestVersion, exportSchema = false)
 abstract class AppRoomDatabase : RoomDatabase() {
 
     abstract fun furnitureDao(): FurnitureDao

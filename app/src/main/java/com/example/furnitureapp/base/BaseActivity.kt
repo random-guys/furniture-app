@@ -7,14 +7,22 @@ import android.view.View
 import androidx.annotation.IdRes
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
+import com.example.furnitureapp.MyApplication
+import com.example.furnitureapp.di.AppComponent
+import com.example.furnitureapp.di.DaggerAppComponent
 import com.ncapdevi.fragnav.FragNavController
 import com.ncapdevi.fragnav.FragNavTransactionOptions
 
 abstract class BaseActivity : AppCompatActivity() {
 
     var mNavController: FragNavController? = null
+     lateinit var appComponent: AppComponent
+        private set
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        appComponent = DaggerAppComponent.builder()
+            .application(application as MyApplication)
+            .build()
         super.onCreate(savedInstanceState)
     }
 
