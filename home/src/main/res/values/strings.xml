@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">home</string>
+
+    <string name="popular_product">POPULAR PRODUCT</string>
+    <string name="new_arrivals">New arrivals</string>
+    <string name="home">Home</string>
+    <string name="search_for_product_store_etc">Search for product, store etc</string>
+    <string name="what_would_you_like_to_buy_today">What would you like to buy today</string>
+</resources>

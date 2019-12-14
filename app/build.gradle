@@ -14,6 +14,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary true
     }
     buildTypes {
         release {
@@ -22,15 +23,25 @@ android {
         }
     }
 
-
+    dataBinding {
+        enabled true
+    }
     compileOptions {
         sourceCompatibility Config.javaVersion
         targetCompatibility Config.javaVersion
+    }
+
+    kotlinOptions{
+        jvmTarget = "1.8"
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation project(":profile")
+    implementation project(":home")
+    implementation project(":core")
 
     implementation MainDeps.kotlinStdLib
 
@@ -40,10 +51,8 @@ dependencies {
     implementation MainDeps.constraintLayout
     implementation MainDeps.legacySupport
 
-    implementation MainDeps.shapeImageView
 
-    implementation MainDeps.smartTabLayout
-    implementation MainDeps.smartTabLayoutUtils
+
 
     implementation MainDeps.bottomNavigationViewEx
 
@@ -63,6 +72,8 @@ dependencies {
 
     implementation MainDeps.glide
     kapt MainDeps.glideCompiler
+
+    implementation MainDeps.timber
 
     implementation MainDeps.dagger
     implementation MainDeps.daggerAndroid

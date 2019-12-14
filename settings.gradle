@@ -1,2 +1,2 @@
-include ':app', ':core', ':buildSrc'
+include ':app', ':core', ':buildSrc', ':profile', ':home'
 rootProject.name='Furniture App'

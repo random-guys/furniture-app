@@ -1,22 +1,30 @@
 package com.example.furnitureapp.di
 
-import android.app.Application
-import com.example.furnitureapp.ui.home.living_room.LivingRoomFragment
+import com.example.furnitureapp.MyApplication
+import com.example.furnitureapp.core.di.CoreComponent
 import dagger.BindsInstance
 import dagger.Component
-import javax.inject.Singleton
+import dagger.android.AndroidInjectionModule
+import dagger.android.AndroidInjector
+import dagger.android.support.AndroidSupportInjectionModule
 
-@Singleton
-@Component(modules = [FurnitureDatabaseModule::class, MockModule::class])
-interface AppComponent {
+@AppScope
+@Component(
+    modules = [
+        AppModule::class,
+        AndroidInjectionModule::class,
+        AndroidSupportInjectionModule::class],
+    dependencies = [CoreComponent::class]
+)
+interface AppComponent : AndroidInjector<MyApplication> {
 
     @Component.Builder
     interface Builder {
 
         @BindsInstance
-        fun application(application: Application): Builder
+        fun application(application: MyApplication): Builder
 
+        fun coreComponent(coreComponent: CoreComponent): Builder
         fun build(): AppComponent
     }
-    fun inject(livingRoomFragment: LivingRoomFragment)
 }

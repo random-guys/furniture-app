@@ -1,0 +1,87 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion Config.compileSdk
+    defaultConfig {
+        minSdkVersion Config.minSdk
+        targetSdkVersion Config.targetSdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+        vectorDrawables.useSupportLibrary true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled true
+    }
+
+    compileOptions {
+        sourceCompatibility Config.javaVersion
+        targetCompatibility Config.javaVersion
+    }
+
+    kotlinOptions{
+        jvmTarget = "1.8"
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(":core")
+
+    implementation MainDeps.kotlinStdLib
+
+    implementation MainDeps.appCompat
+    implementation MainDeps.material
+    implementation MainDeps.coreKtx
+    implementation MainDeps.constraintLayout
+    implementation MainDeps.legacySupport
+
+    implementation MainDeps.fragNav
+
+    implementation MainDeps.timber
+
+    implementation MainDeps.shapeImageView
+
+    implementation MainDeps.roomRuntime
+    implementation MainDeps.roomKtx
+    kapt MainDeps.roomCompiler
+
+    implementation MainDeps.dagger
+    implementation MainDeps.daggerAndroid
+    implementation MainDeps.daggerAndroidSupport
+    kapt MainDeps.daggerCompiler
+    kapt MainDeps.daggerAndroidProcessor
+
+    implementation MainDeps.lifecycleExtensions
+    implementation MainDeps.liveDataKtx
+    implementation MainDeps.viewModelKtx
+    kapt MainDeps.lifecycleCompiler
+
+    implementation MainDeps.coroutinesCore
+    implementation MainDeps.coroutinesAndroid
+
+
+    implementation MainDeps.smartTabLayout
+    implementation MainDeps.smartTabLayoutUtils
+
+    testImplementation TestDeps.junit
+    testImplementation TestDeps.coreTesting
+    testImplementation TestDeps.coroutinesTest
+
+    androidTestImplementation TestDeps.testExtJunit
+    androidTestImplementation AndroidTestDeps.espressoCore
+}

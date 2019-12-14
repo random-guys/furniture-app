@@ -31,6 +31,7 @@ object Versions {
     val junit = "4.12"
     val testExtJunit = "1.1.1"
     val espressoCore = "3.2.0"
+    val timberVersion = "4.7.1"
 }
 
 object MainDeps {
@@ -58,6 +59,7 @@ object MainDeps {
     val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycleVersion}"
     val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:${Versions.lifecycleVersion}"
     val liveDataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.liveDataKtx}"
+    val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.liveDataKtx}"
 
 
     // Kotlin Coroutines
@@ -81,6 +83,7 @@ object MainDeps {
     val daggerAndroidProcessor =
         "com.google.dagger:dagger-android-processor:${Versions.daggerVersion}"
 
+    val timber = "com.jakewharton.timber:timber:${Versions.timberVersion}"
 
 }
 

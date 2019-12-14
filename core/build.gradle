@@ -1,14 +1,13 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
-
+    compileSdkVersion Config.compileSdk
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 29
+        minSdkVersion Config.minSdk
+        targetSdkVersion Config.targetSdk
         versionCode 1
         versionName "1.0"
 
@@ -23,16 +22,54 @@ android {
         }
     }
 
+    dataBinding {
+        enabled true
+    }
+
+    compileOptions {
+        sourceCompatibility Config.javaVersion
+        targetCompatibility Config.javaVersion
+    }
+
+    kotlinOptions{
+        jvmTarget = "1.8"
+    }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    
+
     implementation MainDeps.kotlinStdLib
     implementation MainDeps.appCompat
+    implementation MainDeps.material
     implementation MainDeps.coreKtx
 
+    implementation MainDeps.fragNav
+
+    implementation MainDeps.timber
+
+    implementation MainDeps.dagger
+    implementation MainDeps.daggerAndroid
+    implementation MainDeps.daggerAndroidSupport
+    kapt MainDeps.daggerCompiler
+    kapt MainDeps.daggerAndroidProcessor
+
+    implementation MainDeps.roomRuntime
+    implementation MainDeps.roomKtx
+
+    implementation MainDeps.lifecycleExtensions
+    implementation MainDeps.liveDataKtx
+    kapt MainDeps.lifecycleCompiler
+
+    implementation MainDeps.glide
+    kapt MainDeps.glideCompiler
+
     testImplementation TestDeps.junit
+    testImplementation TestDeps.coreTesting
+    testImplementation TestDeps.coroutinesTest
+
     androidTestImplementation TestDeps.testExtJunit
     androidTestImplementation AndroidTestDeps.espressoCore
+    androidTestImplementation AndroidTestDeps.roomTesting
 }

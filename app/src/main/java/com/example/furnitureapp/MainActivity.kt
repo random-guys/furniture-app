@@ -4,19 +4,19 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
-import com.example.furnitureapp.base.BaseActivity
+import com.example.furniture.profile.ui.ProfileFragment
+import com.example.furnitureapp.core.ui.base.activity.BaseBindingActivity
+import com.example.furnitureapp.databinding.ActivityMainBinding
+import com.example.furnitureapp.home.ui.HomeFragment
 import com.example.furnitureapp.ui.cart.CartFragment
 import com.example.furnitureapp.ui.favourite.FavouriteFragment
-import com.example.furnitureapp.ui.home.HomeFragment
-import com.example.furnitureapp.ui.profile.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
 import com.ncapdevi.fragnav.FragNavController
 
-class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelectedListener,
+class MainActivity : BaseBindingActivity<ActivityMainBinding>(),
+    BottomNavigationView.OnNavigationItemSelectedListener,
     FragNavController.RootFragmentListener {
 
-    private lateinit var mBottomNavigationItemView: BottomNavigationViewEx
     private var doubleBackToExitPressedOnce = false
     private var doubleBackToExitPressedOncePayment = false
     private var doubleBackToExitPressedOnceServices = false
@@ -25,7 +25,6 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
         mNavController = FragNavController(supportFragmentManager, R.id.container)
         mNavController?.apply {
@@ -36,12 +35,9 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
         }
     }
 
-    override fun bindViews() {
-        mBottomNavigationItemView = bind(R.id.navigation)
-    }
 
     override fun setUp() {
-        mBottomNavigationItemView.apply {
+        binding.navigation.apply {
             enableAnimation(false)
             enableItemShiftingMode(false)
             enableShiftingMode(false)
@@ -80,6 +76,8 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
     }
 
     override val numberOfRootFragments: Int = 4
+
+    override fun getLayoutResourceId() = R.layout.activity_main
 
 
     override fun getRootFragment(index: Int): Fragment {

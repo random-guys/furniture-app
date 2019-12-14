@@ -4,10 +4,15 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.furnitureapp.data.local.dao.FurnitureDao
-import com.example.furnitureapp.data.model.HomeItem
+import com.example.furnitureapp.home.cache.dao.FurnitureDao
 
-@Database(entities = [HomeItem::class], version = DatabaseMigrations.latestVersion, exportSchema = false)
+import com.example.furnitureapp.home.cache.model.CachedFurniture
+
+@Database(
+    entities = [CachedFurniture::class],
+    version = DatabaseMigrations.latestVersion,
+    exportSchema = false
+)
 abstract class AppRoomDatabase : RoomDatabase() {
 
     abstract fun furnitureDao(): FurnitureDao
